@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Assertions;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,6 +34,14 @@ public class LoginTest {
 
         String expectedUrl = "https://www.saucedemo.com/inventory.html";
         String actualUrl = driver.getCurrentUrl();
+
+        WebElement productList = driver.findElement(By.id("inventory_container"));
+        Boolean isProductListVisible = productList.isDisplayed();
+
+
+        Assertions.assertTrue(isProductListVisible);
+
+        System.out.println("🍩TESTS PASSED SUCCESSFULLY");
 
         assertEquals(expectedUrl, actualUrl, "El inicio de sesión no fue exitoso");
     }
